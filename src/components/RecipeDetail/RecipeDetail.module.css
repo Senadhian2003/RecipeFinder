@@ -1,0 +1,30 @@
+.border{
+   
+   
+  
+}
+
+.recipeDetailImage{
+    height: 250px;
+    width: 250px;
+    margin: 20px;
+    border-radius: 8px;
+}
+
+.mealName{
+    font-weight: 800;
+    font-style: italic;
+    font-size: 18px;
+    margin: 20px;
+}
+
+.recipeDetailDescription{
+    text-align: start;
+    width: 800px;
+}
+
+.heading{
+    font-weight: 800;
+    font-style: italic;
+    font-size: 16px;
+}

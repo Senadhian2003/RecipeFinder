@@ -1,0 +1,24 @@
+/* CSS */
+.navbar {
+    background-color: transparent;
+    padding: 1rem 0;
+  }
+  
+  .navbar-brand img {
+    height: 40px;
+  }
+  
+  .nav-link {
+    color: #333;
+    font-size: 24px;
+    margin-left: 1rem;
+  }
+  
+.navHeader{
+    font-size: 36px;
+}
+  
+  .active {
+    color: #10B981 !important;
+    
+  }
