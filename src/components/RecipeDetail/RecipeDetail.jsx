@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useMemo } from 'react';
 import styles from './RecipeDetail.module.css'
 
 import { useDispatch, useSelector } from 'react-redux'
@@ -14,22 +15,43 @@ export default function RecipeDetail() {
   console.log(state)
   const { recipeMealId } = state
  
-
-  const ingredients = [];
-  if (recipeDetail) {
-    let i = 1
-    while (true) {
-      const ingredient = recipeDetail[`strIngredient${i}`];
-      const measure = recipeDetail[`strMeasure${i}`];
-      if (ingredient && ingredient.trim() !== "") {
-        ingredients.push({ ingredient, measure });
+  const calculateIngretientsArray = ()=>{
+    if (recipeDetail) {
+      const ingredients = [];
+      let i = 1
+      while (true) {
+        let ingredient = recipeDetail[`strIngredient${i}`];
+        const measure = recipeDetail[`strMeasure${i}`];
+        if (ingredient && ingredient.trim() !== "") {
+          ingredients.push({ ingredient, measure });
+        }
+        else {
+         
+          return ingredients
+        }
+        i += 1
       }
-      else {
-        break;
-      }
-      i += 1
     }
+  
   }
+
+  const cachedIngredients = useMemo(calculateIngretientsArray, [recipeDetail])
+
+  // const ingredients = [];
+  // if (recipeDetail) {
+  //   let i = 1
+  //   while (true) {
+  //     const ingredient = recipeDetail[`strIngredient${i}`];
+  //     const measure = recipeDetail[`strMeasure${i}`];
+  //     if (ingredient && ingredient.trim() !== "") {
+  //       ingredients.push({ ingredient, measure });
+  //     }
+  //     else {
+  //       break;
+  //     }
+  //     i += 1
+  //   }
+  // }
 
 
   useEffect(() => {
@@ -104,7 +126,7 @@ export default function RecipeDetail() {
 
                 <p>
 
-                  {ingredients.map((item) => {
+                  {cachedIngredients.map((item) => {
                     return `${item.ingredient} ${item.measure==' '? `` : `(${item.measure})`}\t`
                   })}
 

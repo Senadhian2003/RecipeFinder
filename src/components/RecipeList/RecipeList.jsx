@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 
 import styles from './RecipeList.module.css'
 import RecipeCard from './RecipeCard'
@@ -15,13 +15,21 @@ function RecipeList() {
   const dispatch = useDispatch()
   // console.log(state.currentCategory,isLoading)
 
-  const getRecipeList = async (category) => {
+  // const getRecipeList =  async (category) => {
+  //   const ItemsInCategory = await getRecipesInCategory(category)
+  //   const meals = ItemsInCategory.meals
+
+  //   dispatch({ type: 'UPDATE_RECIPE_LIST', payload: { recipeList: meals } })
+
+  // }
+  
+  const getRecipeList = useCallback(async (category) => {
     const ItemsInCategory = await getRecipesInCategory(category)
     const meals = ItemsInCategory.meals
 
     dispatch({ type: 'UPDATE_RECIPE_LIST', payload: { recipeList: meals } })
 
-  }
+  },[state.currentCategory]) 
 
   useEffect(() => {
     setIsLoading(true)
