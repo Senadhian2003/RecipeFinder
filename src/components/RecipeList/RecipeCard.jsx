@@ -1,11 +1,10 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card';
-import { getRecipeById } from '../../api/axios';
 import { useDispatch } from 'react-redux';
 import styles from './RecipeList.module.css'
 function RecipeCard({item}) {
   const dispatch = useDispatch()
-  let changeCurrentDisplayItem = async(mealId)=>{
+  let changeCurrentDisplayItem = (mealId)=>{
    
    console.log(mealId)
     

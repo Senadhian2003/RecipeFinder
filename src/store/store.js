@@ -1,14 +1,14 @@
 import { createStore } from "redux";
-import { getCategories } from "../api/axios";
+// import { getCategories } from "../api/axios";
 
-const categories = await getCategories()
+// const categories = await getCategories()
 
-console.log(categories);
+// console.log(categories);
 
 const initialState = {
 
-    categories: categories.categories,
-    currentCategory: categories.categories[0].strCategory,
+    categories: [],
+    currentCategory: '',
     recipeList: [],
     recipeDetailName: '',
     recipeMealId: 0,
@@ -23,6 +23,13 @@ const reducerFunction = (state, action) => {
 
 
     switch (action.type) {
+
+        case 'GET_CATEGORIES':
+            return {
+                ...state,
+                categories: action.payload.categories,
+                currentCategory: action.payload.categories[0].strCategory,
+            }
 
         case 'CHANGE_CATEGORY':
             return {

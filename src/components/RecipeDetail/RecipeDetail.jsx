@@ -12,7 +12,7 @@ export default function RecipeDetail() {
   const state = useSelector(state => state)
   const {recipeDetail} = state;
   const dispatch = useDispatch()
-  console.log(state)
+  // console.log(state)
   const { recipeMealId } = state
  
   const calculateIngretientsArray = ()=>{
@@ -87,7 +87,7 @@ export default function RecipeDetail() {
 
       // dispatch({type : 'UPDATE_RECIPE_DETAIL_ERROR', payload : {isRecipeDetailError : true}})
 
-      setIsError(true)
+      // setIsError(true)
     })
 
 
@@ -97,6 +97,9 @@ export default function RecipeDetail() {
     return <div style={{textAlign : 'center'}}>
       <img  src="https://i.pinimg.com/originals/dc/66/53/dc6653448a617b0564541708101d3eac.gif" alt="" />
     </div>
+  }
+  else if(isError){
+    return <h1>Loading....</h1>
   }
   else if(recipeDetail.strMealThumb)
   return (
@@ -127,7 +130,7 @@ export default function RecipeDetail() {
                 <p>
 
                   {cachedIngredients.map((item) => {
-                    return `${item.ingredient} ${item.measure==' '? `` : `(${item.measure})`}\t`
+                    return `${item.ingredient} ${item.measure===' '? `` : `(${item.measure})`}\t`
                   })}
 
                 </p>

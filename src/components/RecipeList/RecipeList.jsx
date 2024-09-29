@@ -22,7 +22,6 @@ function RecipeList() {
   //   dispatch({ type: 'UPDATE_RECIPE_LIST', payload: { recipeList: meals } })
 
   // }
-  
   const getRecipeList = useCallback(async (category) => {
     const ItemsInCategory = await getRecipesInCategory(category)
     const meals = ItemsInCategory.meals
