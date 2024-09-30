@@ -44,7 +44,7 @@ function RecipeList() {
     }
 
 
-  }, [state.currentCategory])
+  }, [state.currentCategory, getRecipeList])
 
   if (isLoading) {
     return <div style={{ textAlign: 'center' }}>
